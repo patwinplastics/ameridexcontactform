@@ -9,7 +9,6 @@
       --navy: #0d2f5f;
       --red: #c9242b;
       --red-dark: #a01d23;
-      --gray-light: #f5f5f7;
       --border: #d3d6de;
       --text-main: #111827;
       --text-muted: #6b7280;
@@ -34,17 +33,18 @@
 
     main {
       min-height: 100vh;
-      padding: 32px 16px 48px;
-      background: #ffffff;
+      padding: 48px 16px 60px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-wrapper {
+      width: 100%;
+      max-width: var(--max-width);
     }
 
     .contact-hero {
-      max-width: 720px;
-      width: 100%;
-      margin: 0 auto 20px;
+      margin: 0 0 20px;
     }
 
     .contact-hero h1 {
@@ -56,12 +56,11 @@
     .contact-hero p {
       margin: 0;
       color: var(--text-muted);
+      max-width: 620px;
     }
 
     .contact-card {
-      max-width: var(--max-width);
       width: 100%;
-      margin: 0 auto;
       background: #ffffff;
       border-radius: var(--radius-lg);
       padding: 24px 24px 28px;
@@ -170,19 +169,6 @@
       transform: none;
     }
 
-    .status {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-    }
-
-    .status.success {
-      color: #15803d;
-    }
-
-    .status.error {
-      color: #b91c1c;
-    }
-
     @media (max-width: 640px) {
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -196,123 +182,92 @@
 </head>
 <body>
 <main>
-  <section class="contact-hero">
-    <h1>Contact AmeriDex</h1>
-    <p>
-      Have questions about the AmeriDex dryspace system, products, or installation?
-      Send us a message and we will respond within 1–2 business days.
-    </p>
-  </section>
+  <div class="contact-wrapper">
+    <section class="contact-hero">
+      <h1>Contact AmeriDex</h1>
+      <p>
+        Have questions about the AmeriDex dryspace system, products, or installation?
+        Send us a message and we will respond within 1–2 business days.
+      </p>
+    </section>
 
-  <section class="contact-card">
-    <form id="contactForm" action="https://formspree.io/f/xreljrrd" method="POST">
-      <div class="contact-grid">
-        <div class="field">
-          <label class="required" for="firstName">First Name</label>
-          <input id="firstName" name="firstName" type="text" required autocomplete="given-name">
-        </div>
-        <div class="field">
-          <label class="required" for="lastName">Last Name</label>
-          <input id="lastName" name="lastName" type="text" required autocomplete="family-name">
-        </div>
+    <section class="contact-card">
+      <form id="contactForm" action="https://formspree.io/f/xreljrrd" method="POST">
+        <!-- Formspree redirect (change value to your thank you page URL) -->
+        <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html">
 
-        <div class="field">
-          <label class="required" for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email">
-        </div>
-        <div class="field">
-          <label for="phone">Phone (optional)</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel">
-        </div>
+        <div class="contact-grid">
+          <div class="field">
+            <label class="required" for="firstName">First Name</label>
+            <input id="firstName" name="firstName" type="text" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label class="required" for="lastName">Last Name</label>
+            <input id="lastName" name="lastName" type="text" required autocomplete="family-name">
+          </div>
 
-        <div class="field">
-          <label class="required" for="city">City</label>
-          <input id="city" name="city" type="text" required autocomplete="address-level2">
-        </div>
-        <div class="field">
-          <label class="required" for="state">State / Province</label>
-          <select id="state" name="state" required>
-            <option value="">Select</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NY">New York</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="CT">Connecticut</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+          <div class="field">
+            <label class="required" for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
 
-        <div class="field">
-          <label class="required" for="zip">ZIP / Postal Code</label>
-          <input id="zip" name="zip" type="text" required autocomplete="postal-code">
-        </div>
-        <div class="field">
-          <label class="required" for="topic">How can we help?</label>
-          <select id="topic" name="topic" required>
-            <option value="">Select a topic</option>
-            <option value="General question">General question</option>
-            <option value="Product information">Product information</option>
-            <option value="Become an installer">Become an installer</option>
-            <option value="Warranty and support">Warranty and support</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+          <div class="field">
+            <label class="required" for="city">City</label>
+            <input id="city" name="city" type="text" required autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label class="required" for="state">State / Province</label>
+            <select id="state" name="state" required>
+              <option value="">Select</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NY">New York</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="CT">Connecticut</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <div class="field field-full">
-          <label class="required" for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
+          <div class="field">
+            <label class="required" for="zip">ZIP / Postal Code</label>
+            <input id="zip" name="zip" type="text" required autocomplete="postal-code">
+          </div>
+          <div class="field">
+            <label class="required" for="topic">How can we help?</label>
+            <select id="topic" name="topic" required>
+              <option value="">Select a topic</option>
+              <option value="General question">General question</option>
+              <option value="Product information">Product information</option>
+              <option value="Become an installer">Become an installer</option>
+              <option value="Warranty and support">Warranty and support</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <div class="field field-full consent-row">
-          <input id="consent" name="consent" type="checkbox" required>
-          <label for="consent">
-            I agree that AmeriDex or an authorized installer may contact me regarding my inquiry.
-          </label>
-        </div>
+          <div class="field field-full">
+            <label class="required" for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
 
-        <div class="field field-full actions">
-          <button id="submitBtn" type="submit">Send Message</button>
-          <div id="status" class="status"></div>
+          <div class="field field-full consent-row">
+            <input id="consent" name="consent" type="checkbox" required>
+            <label for="consent">
+              I agree that AmeriDex or an authorized installer may contact me regarding my inquiry.
+            </label>
+          </div>
+
+          <div class="field field-full actions">
+            <button id="submitBtn" type="submit">Send Message</button>
+          </div>
         </div>
-      </div>
-    </form>
-  </section>
+      </form>
+    </section>
+  </div>
 </main>
 
-<script>
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("status");
-  const submitBtn = document.getElementById("submitBtn");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "";
-    statusEl.className = "status";
-    submitBtn.disabled = true;
-
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: formData
-      });
-
-      if (response.ok) {
-        form.reset();
-        statusEl.textContent = "Thank you. Your message has been sent.";
-        statusEl.classList.add("success");
-      } else {
-        statusEl.textContent = "Something went wrong. Please try again or email us directly.";
-        statusEl.classList.add("error");
-      }
-    } catch (err) {
-      statusEl.textContent = "Network error. Please check your connection and try again.";
-      statusEl.classList.add("error");
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-</script>
+<!-- No JS required for redirect; Formspree handles it -->
 </body>
 </html>
